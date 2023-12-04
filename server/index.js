@@ -8,7 +8,7 @@ const { v4: uuidv4 } = require('uuid');
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect('mongodb+srv://davidemmolino:Henney123@takehome.8uflibz.mongodb.net/?retryWrites=true&w=majority', { // which db to talk to
+mongoose.connect('mongodb+srv://davidemmolino:Henney123@takehome.8uflibz.mongodb.net/?retryWrites=true&w=majority', {
     useNewUrlParser: true,
 })
 
@@ -48,15 +48,14 @@ app.post('/add', async (req, res) => {
         res.sendStatus(200)
     } catch(error) {
         console.error(error)
-        res.status(500).send('An error occured while adding new entry')
+        res.status(500).send('An error occurred while adding new entry')
     }
 })
 
 app.delete('/delete/:transactionId', async (req, res) => {
+    const transactionId = req.params.transactionId;
     try {      
-        const transactionId = req.params.transactionId;
         const deletedEntry = await TransactionModel.findOneAndDelete({ transactionId: transactionId });
-
         res.sendStatus(200);
     } catch (error) {
         res.status(500).send('error bro')
