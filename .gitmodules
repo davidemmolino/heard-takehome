@@ -1,0 +1,3 @@
+[submodule "heard-frontend"]
+	path = heard-frontend
+	url = https://github.com/davidemmolino/heard-frontend
