@@ -41,7 +41,7 @@ app.post('/add', async (req, res) => {
             amount,
             fromAccount,
             toAccount,
-            currentDate,
+            transactionDate: currentDate,
             transactionId,
         });
         await entry.save();
